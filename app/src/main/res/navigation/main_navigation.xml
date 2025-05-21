@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/listNodesFragment">
+
+    <fragment
+        android:id="@+id/listNodesFragment"
+        tools:layout="@layout/list_nodes_fragment"
+        android:name="com.denet.test.screens.list_nodes.ListNodesFragment"
+        android:label="ListNodesFragment" />
+</navigation>

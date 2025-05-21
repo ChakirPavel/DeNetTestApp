@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DeNetTestApp</string>
+    <string name="node_list_screen_remove">Удалить</string>
+</resources>
