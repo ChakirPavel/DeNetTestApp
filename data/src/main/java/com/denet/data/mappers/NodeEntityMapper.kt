@@ -29,7 +29,7 @@ class NodeEntityMapper @Inject constructor() {
     private fun NodeEntity.toDomainWithoutChildren(): Node = Node(
         id = id,
         name = name,
-        children = null,
+        children = emptyList(),
         parent = null
     )
 

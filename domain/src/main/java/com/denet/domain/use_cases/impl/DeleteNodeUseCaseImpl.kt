@@ -1,6 +1,5 @@
-package com.denet.data.use_cases
+package com.denet.domain.use_cases.impl
 
-import com.denet.domain.models.Node
 import com.denet.domain.repository.NodeRepository
 import com.denet.domain.use_cases.DeleteNodeUseCase
 import jakarta.inject.Inject
@@ -8,5 +7,5 @@ import jakarta.inject.Inject
 class DeleteNodeUseCaseImpl @Inject constructor(
     private val repository: NodeRepository
 ): DeleteNodeUseCase {
-    override suspend fun invoke(ids: List<Int>) = repository.removeListNodes(ids)
+    override suspend fun invoke(id: Int) = repository.deleteNode(id)
 }

@@ -1,6 +1,5 @@
-package com.denet.data.use_cases
+package com.denet.domain.use_cases.impl
 
-import com.denet.domain.controllers.CurrentNodeController
 import com.denet.domain.models.Node
 import com.denet.domain.repository.NodeRepository
 import com.denet.domain.use_cases.GetNodesUseCase
