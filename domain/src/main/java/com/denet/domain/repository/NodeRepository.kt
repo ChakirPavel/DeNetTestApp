@@ -7,5 +7,5 @@ interface NodeRepository {
     suspend fun addNode(parentId: Int?)
     suspend fun deleteNode(id: Int)
     suspend fun removeListNodes(ids: List<Int>)
-    suspend fun getFlowNodes(): Flow<Map<Int, Node>>
+    suspend fun observeNodes(): Flow<Map<Int, Node>>
 }

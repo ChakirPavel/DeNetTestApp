@@ -10,7 +10,7 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class RepositoryModule {
+interface RepositoryModule {
     @Binds
     abstract fun bindNodeRepository(
         impl: NodeRepositoryImpl

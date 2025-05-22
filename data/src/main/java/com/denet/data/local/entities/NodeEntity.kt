@@ -9,7 +9,7 @@ data class NodeEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     @ColumnInfo(name = "name")
-    var name: String = "",
+    val name: String = "",
     @ColumnInfo(name = "parent_id")
     val parentId: Int? = null,
     @ColumnInfo(name = "child_ids")

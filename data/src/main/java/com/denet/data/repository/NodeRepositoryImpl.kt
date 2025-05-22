@@ -3,7 +3,7 @@ package com.denet.data.repository
 import androidx.room.Transaction
 import com.denet.data.local.dao.NodeDao
 import com.denet.data.local.entities.NodeEntity
-import com.denet.data.local.utls.UtilsString
+import com.denet.data.local.utls.NodeNameGenerator
 import com.denet.data.mappers.NodeEntityMapper
 import com.denet.domain.models.Node
 import com.denet.domain.repository.NodeRepository
@@ -15,7 +15,7 @@ import java.util.UUID
 class NodeRepositoryImpl @Inject constructor(
     private val nodeDao: NodeDao,
     private val mapper: NodeEntityMapper,
-    private val utils: UtilsString
+    private val nodeNameGenerator: NodeNameGenerator
 ) : NodeRepository {
 
     @Transaction
@@ -23,7 +23,7 @@ class NodeRepositoryImpl @Inject constructor(
         val newNodeId = nodeDao.insert(
             NodeEntity(
                 parentId = parentId,
-                name = utils.generateName(UUID.randomUUID().toString())
+                name = nodeNameGenerator.generateName(UUID.randomUUID().toString())
             )
         ).toInt()
         if (parentId != null) {
@@ -48,7 +48,7 @@ class NodeRepositoryImpl @Inject constructor(
     @Transaction
     override suspend fun removeListNodes(ids: List<Int>) = nodeDao.deleteByIds(ids)
 
-    override suspend fun getFlowNodes(): Flow<Map<Int, Node>> = nodeDao.getAll().map {
+    override suspend fun observeNodes(): Flow<Map<Int, Node>> = nodeDao.getAll().map {
         mapper.toDomain(it)
     }
 

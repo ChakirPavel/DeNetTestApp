@@ -4,19 +4,15 @@ import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.denet.test.R
 
 open class SpaceItemDecoration(private val context: Context) : RecyclerView.ItemDecoration() {
 
     protected open val spaceHorizontalSize by lazy {
-        dpToPx(8)
+        context.resources.getDimensionPixelSize(R.dimen.space_item_decoration_default)
     }
     protected open val spaceVerticalSize by lazy {
-        dpToPx(8)
-    }
-
-    private fun dpToPx(dp: Int): Int {
-        val density = context.resources.displayMetrics.density
-        return (dp * density).toInt()
+        context.resources.getDimensionPixelSize(R.dimen.space_item_decoration_default)
     }
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
@@ -36,6 +32,7 @@ open class SpaceItemDecoration(private val context: Context) : RecyclerView.Item
         outRect.right = spaceHorizontalSize
     }
     protected open fun setTopSpace(outRect: Rect, position: Int, itemCount: Int){
+        context.resources.getDimension(R.dimen.space_item_decoration_bottom)
         outRect.top = spaceVerticalSize
     }
     protected open fun setBottomSpace(outRect: Rect, position: Int, itemCount: Int){
